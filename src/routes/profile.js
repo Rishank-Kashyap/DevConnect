@@ -49,22 +49,28 @@ profileRouter.patch("/profile/editPassword", userAuth, async (req, res) => {
     );
 
     if (!isCurrentPasswordCorrect) {
-      throw new Error("Please enter correct current Password");
+      return res
+        .status(400)
+        .json({ error: "Please enter correct current Password" });
     }
 
     if (!validator.isStrongPassword(newPassword)) {
-      throw new Error("Please enter a strong New Password");
+      return res
+        .status(400)
+        .json({ error: "Please enter a strong New Password" });
     }
 
     loggedInUser.password = await bcrypt.hash(newPassword, 10);
 
     await loggedInUser.save();
 
-    res.send(
-      `${loggedInUser.firstName} your Password has been updated successfully`
-    );
+    res
+      .status(200)
+      .json({
+        success: `${loggedInUser.firstName}, your password has been updated successfully`,
+      });
   } catch (err) {
-    res.send(err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 
