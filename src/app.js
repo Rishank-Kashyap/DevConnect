@@ -34,5 +34,9 @@ connectDB()
     console.log("Database cannot  be Connected");
   });
 
+  app.get("/", (req, res) => {
+    res.send("🚀 Server is running on Vercel!");
+  });
+
   module.exports = app;
   module.exports.handler = serverless(app);
