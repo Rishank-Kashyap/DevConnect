@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const connectDB = require("./config/databases");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
@@ -8,7 +9,7 @@ require("dotenv").config();
 
 app.use(
   cors({
-    origin: "https://dev-connect-web-wine.vercel.app/login",
+    origin: "https://dev-connect-web-wine.vercel.app",
     credentials: true,
   })
 );
