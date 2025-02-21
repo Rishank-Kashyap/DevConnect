@@ -3,5 +3,5 @@
 
   "builds": [{ "src": "app.js", "use": "@vercel/node" }],
 
-  "routes": [{ "src": "/(.*)", "dest": "/app.js" }]
+  "routes": [{ "src": "/(.*)", "dest": "/src/app.js" }]
 }
