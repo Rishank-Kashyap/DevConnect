@@ -29,10 +29,10 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database connected");
-    app.listen(process.env.PORT, () => {
-      console.log(`Server is listening at port ${process.env.PORT}`);
-    });
   })
   .catch((err) => {
     console.log("Database cannot  be Connected");
   });
+
+  module.exports = app;
+  module.exports.handler = serverless(app);
