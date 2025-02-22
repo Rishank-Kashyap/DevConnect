@@ -24,6 +24,7 @@ authRouter.post("/signup", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
+      sameSite: "None",
       expires: new Date(Date.now() + 8 * 3600000),
     });
 
@@ -48,6 +49,7 @@ authRouter.post("/login", async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         secure: true,
+        sameSite: "None",
         expires: new Date(Date.now() + 8 * 3600000),
       });
 
